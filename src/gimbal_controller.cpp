@@ -7,6 +7,9 @@
 #define MAX_PIT_RADIAN 0.2618
 #define MIN_PIT_RADIAN -0.3491
 
+#define AIM_X_IN_PIXEL 320.0
+#define AIM_Y_IN_PIXEL 240.0
+
 class GimbalController
 {
 	float pitch_speed;
@@ -28,8 +31,8 @@ public:
 
 	void GimbalControlCallback (const gimbal_control::GimbalTargetInPixel::ConstPtr& msg)
 	{
-		yaw_speed = ( (float) msg->x) / 1000.0f;
-		pitch_speed = ( (float) msg->y) /1000.0f;
+		yaw_speed = (AIM_X_IN_PIXEL - (float) msg->x) / 10000.0f;
+		pitch_speed = (AIM_Y_IN_PIXEL - (float) msg->y) / -10000.0f;
 		ROS_INFO("msg->x = %d, msg->y = %d", msg->x, msg->y);
     		ROS_INFO("pitch_speed = %f,  yaw_speed = %f", pitch_speed, yaw_speed);
 	}

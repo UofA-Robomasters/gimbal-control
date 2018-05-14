@@ -52,6 +52,7 @@ add_message_files(
   FILES 
   GimbalTargetInPixel.msg 
   EnemyPos.msg
+  ShootCmd.msg
 )
 
 ## Generate services in the 'srv' folder

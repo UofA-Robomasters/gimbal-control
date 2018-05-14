@@ -12,8 +12,8 @@ key_maps = {
 	} 
 
 def talker():
-    pub = rospy.Publisher('cmd_sht', EnemyPos, queue_size=10)
     rospy.init_node('mockup_shoot_control_node', anonymous=True)
+    pub = rospy.Publisher('cmd_sht', EnemyPos, queue_size=10)
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
 	test_msg = EnemyPos()
